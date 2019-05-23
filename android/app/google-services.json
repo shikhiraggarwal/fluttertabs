@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "209469065466",
+    "firebase_url": "https://crictfever.firebaseio.com",
+    "project_id": "crictfever",
+    "storage_bucket": "crictfever.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:209469065466:android:d1e867e85b473777",
+        "android_client_info": {
+          "package_name": "com.crictfever.crictfever"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "209469065466-8ij8fidashqe07ds7phl420sf4idpul1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBm5Cj7dCvYsm_7Xsw8FCOdp6gXO5zDMAA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "209469065466-8ij8fidashqe07ds7phl420sf4idpul1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "209469065466-s5em2iefhc4iscslfds589rs41kkbhie.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.crictfever.cricfever"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

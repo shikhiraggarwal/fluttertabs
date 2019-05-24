@@ -138,7 +138,22 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
           // Appbar
           appBar: new AppBar(
               // Title
-              title: new Image.asset("assets/images/logo.png"),
+              title: new Row(
+                children: <Widget>[
+                  Text("C", style: TextStyle(fontFamily: "CartoonUS", fontSize: 40.0, color: Color(0xFFf7e0c8))),
+                  Text("r", style: TextStyle(fontFamily: "CartoonUS", fontSize: 40.0, color: Color(0xFFf7e0c8))),
+                  Text("i", style: TextStyle(fontFamily: "CartoonUS", fontSize: 40.0, color: Colors.red)),
+                  Text("c", style: TextStyle(fontFamily: "CartoonUS", fontSize: 40.0, color: Color(0xFFf7e0c8))),
+                  Text("k", style: TextStyle(fontFamily: "CartoonUS", fontSize: 40.0, color: Color(0xFFf7e0c8))),
+                  Text("e", style: TextStyle(fontFamily: "CartoonUS", fontSize: 40.0, color: Color(0xFFf7e0c8))),
+                  Text("t", style: TextStyle(fontFamily: "CartoonUS", fontSize: 40.0, color: Color(0xFFf7e0c8))),
+                  Text("f", style: TextStyle(fontFamily: "CartoonUS", fontSize: 40.0, color: Color(0xFFf7e0c8))),
+                  Text("e", style: TextStyle(fontFamily: "CartoonUS", fontSize: 40.0, color: Color(0xFFf7e0c8))),
+                  Text("v", style: TextStyle(fontFamily: "CartoonUS", fontSize: 40.0, color: Color(0xFFf7e0c8))),
+                  Text("e", style: TextStyle(fontFamily: "CartoonUS", fontSize: 40.0, color: Color(0xFFf7e0c8))),
+                  Text("r", style: TextStyle(fontFamily: "CartoonUS", fontSize: 40.0, color: Color(0xFFf7e0c8))),
+                ],
+              ),
               // Set the background color of the App Bar
               backgroundColor: new Color(0xFF412d35), // Color(0xFF42A5F5)
               // Set the bottom property of the Appbar to include a Tab Bar

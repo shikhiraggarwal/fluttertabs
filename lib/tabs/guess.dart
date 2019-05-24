@@ -186,7 +186,7 @@ class GuessState extends State<Guess> {
         margin: EdgeInsets.all(1.0),
         child: Center(
           child: Text(
-            "No bettable game available",
+            "Loading game...",
             style: TextStyle(
               color: Color(0xFF412d35),
               fontSize: 25.0,

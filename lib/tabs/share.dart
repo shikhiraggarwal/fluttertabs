@@ -37,8 +37,10 @@ class ShareState extends State<Share> {
             _rewardVideoLoaded = true;
           } else if (event == AdmobAdEvent.opened) {
             print("opened");
+            generateReward = true;
           } else if (event == AdmobAdEvent.started) {
             print("started");
+            generateReward = true;
           } else if (event == AdmobAdEvent.leftApplication) {
             print("left");
           } else if (event == AdmobAdEvent.completed) {
@@ -163,11 +165,12 @@ class ShareState extends State<Share> {
         itemCount: terms.length,
         itemBuilder: (BuildContext context, int i) {
           return ListTile(
-            leading: Icon(FontAwesomeIcons.solidCircle, size: 10.0,),
+//            leading: Icon(FontAwesomeIcons.solidCircle, size: 10.0,),
             title: Text(
               terms[i]["term"].toString(),
               style: TextStyle(color: Colors.grey[700]),
             ),
+            subtitle: Divider(),
           );
         },
       ),
@@ -184,22 +187,27 @@ class ShareState extends State<Share> {
       child: ListView.builder(
         itemCount: rewards.length,
         itemBuilder: (BuildContext context, int i) {
-          return ListTile(
-            leading: Text(
-              rewards[i]["id"].toString(),
-              style: TextStyle(color: Colors.grey[700]),
+          return Container(
+            child: Row(
+              children: <Widget>[
+                Container(
+                  width: 188.0,
+                  child: Text(
+                    rewards[i]["name"],
+                    style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Expanded(
+                  child: i == 0
+                      ? Text("Rank " + rewards[i]["rank_start"].toString())
+                      : Text("Ranks " +
+                      rewards[i]["rank_start"].toString() +
+                      " to " +
+                      rewards[i]["rank_end"].toString()),
+                )
+              ],
             ),
-            title: Text(
-              rewards[i]["name"],
-              style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
-            ),
-            trailing: i == 0
-                ? Text("Rank " + rewards[i]["rank_start"].toString())
-                : Text("Ranks " +
-                    rewards[i]["rank_start"].toString() +
-                    " to " +
-                    rewards[i]["rank_end"].toString()),
-            dense: true,
+            height: 50.0,
           );
         },
       ),

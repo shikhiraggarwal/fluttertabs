@@ -578,12 +578,12 @@ class GuessState extends State<Guess> {
             ),
             Center(
               child: Container(
-                height: 250.0,
-                width: 300.0,
+                height: 100.0,
+                width: 320.0,
                 color: Colors.white,
                 child: AdmobBanner(
                   adUnitId: bannerAdID,
-                  adSize: AdmobBannerSize.MEDIUM_RECTANGLE,
+                  adSize: AdmobBannerSize.LARGE_BANNER,
                 ),
               ),
             ),

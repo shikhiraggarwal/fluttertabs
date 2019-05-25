@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:crictfever/data.dart';
+import 'package:crictfever/pages/standings.dart';
+import 'package:crictfever/pages/fixtures.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:admob_flutter/admob_flutter.dart';
+import 'package:crictfever/prize_dialog.dart';
 import 'package:intl/intl.dart';
 
 class Guess extends StatefulWidget {
@@ -339,8 +342,12 @@ class GuessState extends State<Guess> {
                       Expanded(
                         child: TextField(
                           onChanged: (value) => _ChangePointsValue(value),
-                          decoration: InputDecoration(hintText: "Points",labelText: "Points to bet"),
-                          style: TextStyle(color: Colors.red, fontStyle: FontStyle.italic, letterSpacing: 1.5),
+                          decoration: InputDecoration(
+                              hintText: "Points", labelText: "Points to bet"),
+                          style: TextStyle(
+                              color: Colors.red,
+                              fontStyle: FontStyle.italic,
+                              letterSpacing: 1.5),
                           keyboardType: TextInputType.numberWithOptions(
                               signed: false, decimal: false),
                         ),
@@ -372,6 +379,29 @@ class GuessState extends State<Guess> {
                   ),
                   margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 10.0),
                 ),
+                Container(
+                  alignment: Alignment.center,
+                  child: FlatButton(
+                    onPressed: () => showDialog(
+                          context: context,
+                          builder: (BuildContext context) => PrizeDialog(
+                                title: "How to play",
+                                description: new Text(
+                                    "Just select the team you want to bet on and enter points. You cannot cancel any bet after it is placed. Betting on a game opens 24 hours before the game and closes 30 minutes prior to the game.",
+                                style: TextStyle(fontSize: 25.0, letterSpacing: 1.4), textAlign: TextAlign.center,),
+                                buttonText: "Ok",
+                              ),
+                        ),
+                    child: Text(
+                      "How to play",
+                      style: TextStyle(
+                          fontSize: 12.0, fontStyle: FontStyle.italic),
+                    ),
+                    textColor: Colors.blueGrey,
+                    padding: EdgeInsets.all(5.0),
+                  ),
+                  height: 30.0,
+                )
               ],
             ),
           ),
@@ -496,6 +526,56 @@ class GuessState extends State<Guess> {
               ),
             ),
             openBetsWidget(),
+            Container(
+              height: 40.0,
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      child: FlatButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Fixtures()),
+                          );
+                        },
+                        child: Text(
+                          "Show Fixtures",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 1.5,
+                              fontSize: 19.0),
+                        ),
+                      ),
+                      color: Colors.teal[200],
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      child: FlatButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Standings()),
+                          );
+                        },
+                        child: Text(
+                          "Show Standings",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 1.5,
+                              fontSize: 19.0),
+                        ),
+                      ),
+                      color: Colors.purple[200],
+                    ),
+                  ),
+                ],
+              ),
+            ),
             Center(
               child: Container(
                 height: 250.0,

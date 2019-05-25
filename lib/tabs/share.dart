@@ -208,7 +208,7 @@ class ShareState extends State<Share> {
   }
 
   Future<void> shareWhatsApp(msg) async{
-    var response = await FlutterShareMe().shareToSystem(msg: 'Bet and win brand new Hyundai Venue. Download the app from playstore and enter my code in profile. I get 200 points and you get 100 points. My code is *'+msg+'* https://play.google.com/store/apps/details?id=com.crictfever.crictfever');
+    var response = await FlutterShareMe().shareToSystem(msg: 'Bet and win brand new Hyundai Venue. Download the app from playstore and enter my code in profile. I get 200 points and you get 100 points. Bet only with points no real money required. My code is *'+msg+'* https://play.google.com/store/apps/details?id=com.crictfever.crictfever');
     print(response);
   }
 
@@ -262,7 +262,7 @@ class ShareState extends State<Share> {
                       child: FlatButton(
                         child: Text("Tap here to share",style: TextStyle(
                             color: new Color(0xFFf7e0c8),
-                            fontSize: 10.0,
+                            fontSize: 15.0,
                             letterSpacing: 2.0),),
                         onPressed: () => shareWhatsApp(widget.data.shareId),
                       ),

@@ -76,7 +76,7 @@ class PrizeDialog extends StatelessWidget {
           child: CircleAvatar(
             backgroundColor: Color(0xFF412d35),
             radius: Consts.avatarRadius,
-            child: Container(child: Icon(title != "Terms" ? FontAwesomeIcons.trophy : FontAwesomeIcons.stickyNote, size: 65.0,color: Colors.amber[400],),padding: EdgeInsets.fromLTRB(0.0, 0.0, 5.5, 0.0),),
+            child: Container(child: Icon(title != "Terms" ? title != "How to play" ? FontAwesomeIcons.trophy : FontAwesomeIcons.diceSix : FontAwesomeIcons.stickyNote, size: 65.0,color: Colors.amber[400],),padding: EdgeInsets.fromLTRB(0.0, 0.0, 5.5, 0.0),),
           ),
         ),
 

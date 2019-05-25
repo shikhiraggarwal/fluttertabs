@@ -34,6 +34,8 @@ class ProfileState extends State<Profile> {
 
   }
 
+  bool _saving = false;
+
   void submitProfileInfo(id) async{
     Map profileMap = new Map();
     profileMap["id"] = id.toString();
@@ -50,31 +52,39 @@ class ProfileState extends State<Profile> {
   }
 
   Future<void> updatePlayer(Map body) async {
+    setState(() {
+      _saving = true;
+    });
     String url = baseUrl + "/players/update.json";
     http.post(url, body: body).then((http.Response response) {
       final int statusCode = response.statusCode;
+      print(statusCode);
       Map bodyJson = jsonDecode(response.body);
-      if (statusCode < 200 || statusCode > 400) {
+      if (statusCode != 200) {
         Scaffold.of(_scaffoldContext).showSnackBar(new SnackBar(
           content: new Text('Unable to save information'),
           duration: new Duration(seconds: 5),
         ));
+        _saving = false;
       } else {
         if (bodyJson["error"] != null) {
           Scaffold.of(_scaffoldContext).showSnackBar(new SnackBar(
             content: new Text(bodyJson["error"]),
             duration: new Duration(seconds: 5),
           ));
+          _saving = false;
         } else {
           Scaffold.of(_scaffoldContext).showSnackBar(new SnackBar(
             content: new Text('Your information is saved'),
             duration: new Duration(seconds: 5),
           ));
+          _saving = false;
         }
       }
       if (this.mounted && bodyJson["error"] == null) {
         setState(() {
           widget.data.myData = response.body;
+          _saving = false;
         });
       }
     });
@@ -326,7 +336,7 @@ class ProfileState extends State<Profile> {
                       }
                     },
                     padding: EdgeInsets.fromLTRB(100.0, 10.0, 100.0, 10.0),
-                    child: Text('Save', style: TextStyle(letterSpacing: 2.0, fontWeight: FontWeight.bold, fontSize: 20.0, color: Color(0xFF412d35),),),
+                    child: _saving ? Container(child: CircularProgressIndicator(), height: 24.0, width: 52.0, padding: EdgeInsets.fromLTRB(16.0,2.0,16.0,2.0),) : Text('Save', style: TextStyle(letterSpacing: 2.0, fontWeight: FontWeight.bold, fontSize: 20.0, color: Color(0xFF412d35),),),
                   ),
                 ),
               ),

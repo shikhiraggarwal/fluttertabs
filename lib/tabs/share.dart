@@ -30,25 +30,39 @@ class ShareState extends State<Share> {
         adUnitId: rewardAdID,
         listener: (AdmobAdEvent event, Map<String, dynamic> args) {
           if (event == AdmobAdEvent.rewarded) {
+            print("rewarding");
             generateReward = true;
           } else if (event == AdmobAdEvent.loaded) {
+            print("loaded");
             _rewardVideoLoaded = true;
+          } else if (event == AdmobAdEvent.opened) {
+            print("opened");
+          } else if (event == AdmobAdEvent.started) {
+            print("started");
+          } else if (event == AdmobAdEvent.leftApplication) {
+            print("left");
           } else if (event == AdmobAdEvent.completed) {
+            print("completed");
             if (generateReward) {
               generateReward = false;
               add25RewardPoints();
+              rewardAd.dispose();
             }
           } else if (event == AdmobAdEvent.closed) {
+            print("closed");
             if (generateReward) {
               generateReward = false;
               add25RewardPoints();
+              rewardAd.dispose();
             } else {
               Scaffold.of(_scaffoldContext).showSnackBar(new SnackBar(
                 content: new Text('Failed to generate ad reward try after some time'),
                 duration: new Duration(seconds: 5),
               ));
+              rewardAd.dispose();
             }
-            rewardAd.dispose();
+          } else {
+            print("else");
           }
         });
     rewardAd.load();
@@ -101,7 +115,6 @@ class ShareState extends State<Share> {
       setState(() {
         widget.data.points = widget.data.points + 25;
       });
-      rewardAd.load();
     }
   }
 
@@ -195,7 +208,7 @@ class ShareState extends State<Share> {
   }
 
   Future<void> shareWhatsApp(msg) async{
-    var response = await FlutterShareMe().shareToSystem(msg: 'Bet and win brand new Hyundai Venue. Download the app and enter my code in profile. I get 200 points and you get 100 points. My code is *'+msg+'*');
+    var response = await FlutterShareMe().shareToSystem(msg: 'Bet and win brand new Hyundai Venue. Download the app from playstore and enter my code in profile. I get 200 points and you get 100 points. My code is *'+msg+'* https://play.google.com/store/apps/details?id=com.crictfever.crictfever');
     print(response);
   }
 

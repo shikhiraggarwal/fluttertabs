@@ -333,23 +333,17 @@ class GuessState extends State<Guess> {
                 Container(
                   child: Row(
                     children: <Widget>[
-                      Text(
-                        "Points to bet: ",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w300,
-                            fontStyle: FontStyle.italic,
-                            letterSpacing: 2.0,
-                            color: Color(0xFF412d35)),
-                      ),
                       Container(
+                        width: 20.0,
+                      ),
+                      Expanded(
                         child: TextField(
                           onChanged: (value) => _ChangePointsValue(value),
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.red),
+                          decoration: InputDecoration(hintText: "Points",labelText: "Points to bet"),
+                          style: TextStyle(color: Colors.red, fontStyle: FontStyle.italic, letterSpacing: 1.5),
                           keyboardType: TextInputType.numberWithOptions(
                               signed: false, decimal: false),
                         ),
-                        width: 80.0,
                       ),
                       Container(
                         margin: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
